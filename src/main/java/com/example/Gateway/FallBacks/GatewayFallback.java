@@ -11,4 +11,10 @@ public class GatewayFallback {
     public String accountsFallback(){
         return "Account-Service is Down. Please try again later.";
     }
+
+    @RequestMapping("/customersFallback")
+    public String customersFallback(){
+        return "Customer-Service is Down. Please try again later.";
+    }
+
 }

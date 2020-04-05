@@ -18,6 +18,11 @@ public class SpringCloudConfig {
                                 .setFallbackUri("forward:/fallback/accountsFallback")))
                         .uri("lb://account-service")
                         .id("accountsModule"))
+                .route(r -> r.path("/v1/customers/**")
+                        .filters(f -> f.hystrix(h -> h.setName("customer-service")
+                                .setFallbackUri("forward:/fallback/customersFallback")))
+                        .uri("lb://accountHolder-service")
+                        .id("customersModule"))
                 .build();
     }
 
